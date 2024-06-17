@@ -34,7 +34,7 @@
     "@wdio/spec-reporter": "^7.25.1",
     "@wdio/sync": "^7.25.1",
     "eslint": "^8.24.0",
-    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-vue": "^9.5.1",
     "eslint-plugin-wdio": "^7.21.0",

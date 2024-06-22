@@ -1,4 +1,6 @@
-async function getUserData(): Promise<object> {
+import UserData from "./interfaces";
+
+async function getUserData(): Promise<UserData | null | undefined> {
     try {
         const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
 
@@ -7,8 +9,9 @@ async function getUserData(): Promise<object> {
         return result;
     } catch (error: unknown) {
         console.error('Error:', error);
-        return {};
     }
+
+    return
 }
 
 export default getUserData;

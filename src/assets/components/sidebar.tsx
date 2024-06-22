@@ -37,6 +37,12 @@ const Sidebar: React.FC = (): React.JSX.Element => {
                         <h1>Slack</h1>
                     </a>
                 </span>
+
+                <span className="pageSelector">
+                    <a href='/logout'>
+                        <h1>Logout</h1>
+                    </a>
+                </span>
             </div>
         </div>
     )

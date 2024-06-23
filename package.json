@@ -10,19 +10,22 @@
     "@types/node": "^16.18.100",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "http-proxy-middleware": "^3.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-helmet-async": "^2.0.5",
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
-    "typescript": "^4.9.5",
+    "typescript": "^5.0.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "ts-node --esm server/index.ts",
+    "tsc": "tsc --version"
   },
   "eslintConfig": {
     "extends": [

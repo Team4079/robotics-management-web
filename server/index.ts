@@ -1,6 +1,11 @@
 import express, { Express } from "express";
+import "./setupProxy";
 
 const app: Express = express();
+
+app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   res.send("Hello World!");

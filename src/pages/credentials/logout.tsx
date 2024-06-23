@@ -19,6 +19,7 @@ const LogoutPage: React.FC = (): React.JSX.Element => {
 
         if (data.error) {
             alert(data.error);
+            window.location.href = "/login";
         } else {
             window.location.href = "/login";
         }

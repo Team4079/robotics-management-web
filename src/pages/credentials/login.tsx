@@ -1,4 +1,5 @@
 import React from "react";
+import { APP_HOSTNAME } from "../../../server/modules/env.ts";
 import '../../assets/scss/login.scss';
 
 const LoginPage: React.FC = (): React.JSX.Element => {
@@ -17,7 +18,7 @@ const LoginPage: React.FC = (): React.JSX.Element => {
             })
         }
 
-        const response = await fetch(process.env.REACT_APP_API_URL + "/login", jsonData);
+        const response = await fetch(`${APP_HOSTNAME}/login`, jsonData);
         const data = await response.json();
 
         if (data.error) {

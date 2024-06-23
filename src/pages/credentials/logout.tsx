@@ -1,4 +1,5 @@
 import React from "react";
+import { APP_HOSTNAME } from "../../../server/modules/env.ts";
 import '../../assets/scss/logout.scss';
 
 const LogoutPage: React.FC = (): React.JSX.Element => {
@@ -14,7 +15,7 @@ const LogoutPage: React.FC = (): React.JSX.Element => {
             })
         }
 
-        const response = await fetch(process.env.REACT_APP_API_URL + "/logout", jsonData);
+        const response = await fetch(`${APP_HOSTNAME}/logout`, jsonData);
         const data = await response.json();
 
         if (data.error) {

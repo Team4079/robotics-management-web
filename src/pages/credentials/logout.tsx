@@ -1,10 +1,10 @@
 import React from "react";
-import { APP_HOSTNAME } from "../../../server/modules/env.ts";
 import '../../assets/scss/logout.scss';
 
 const LogoutPage: React.FC = (): React.JSX.Element => {
     const logout = async (): Promise<void> => {
         document.cookie = "token=; path=/";
+        
         const jsonData = {
             "method": "POST",
             "headers": {
@@ -15,7 +15,7 @@ const LogoutPage: React.FC = (): React.JSX.Element => {
             })
         }
 
-        const response = await fetch(`${APP_HOSTNAME}/logout`, jsonData);
+        const response = await fetch("/logout", jsonData);
         const data = await response.json();
 
         if (data.error) {

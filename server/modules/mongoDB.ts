@@ -2,7 +2,7 @@
 import { Collection, Db, DeleteResult, Filter, MongoClient, UpdateResult } from "mongodb";
 import { CLIENT_DB, URI } from "./env.ts";
 
-const client: MongoClient = new MongoClient(URI);
+const client: MongoClient = new MongoClient( URI! );
 
 /**
  * Connects to the MongoDB database

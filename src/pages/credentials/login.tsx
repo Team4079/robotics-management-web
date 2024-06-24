@@ -18,7 +18,7 @@ const LoginPage: React.FC = (): React.JSX.Element => {
             })
         }
 
-        const response = await fetch(`${APP_HOSTNAME}/login`, jsonData);
+        const response = await fetch(`/login`, jsonData);
         const data = await response.json();
 
         if (data.error) {

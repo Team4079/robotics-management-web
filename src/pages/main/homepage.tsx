@@ -4,10 +4,8 @@ import Sidebar from '../../assets/components/sidebar';
 import getUserData from '../../assets/ts/getUserData';
 import UserData from '../../assets/ts/interfaces';
 
-
-
 const HomePage: React.FC = (): React.JSX.Element => {
-    const [data, setData] = React.useState<UserData | null>({ username: 'Erick Tran' });
+    const [data, setData] = React.useState<UserData | null | undefined>({ username: 'Erick Tran' });
 
     React.useEffect(() => {
         try {

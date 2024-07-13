@@ -1,40 +1,92 @@
-import React from "react";
-import { APP_HOSTNAME } from "../../../server/modules/env.ts";
+import React from 'react';
 import '../../assets/scss/login.scss';
+
+interface LoginData {
+    status: number;
+    message: string;
+}
 
 const LoginPage: React.FC = (): React.JSX.Element => {
     const username = React.useRef<HTMLInputElement>(null);
     const password = React.useRef<HTMLInputElement>(null);
 
-    const loginToAccount = async () => {
-        const jsonData = {
+    const loginToAccount = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+        e.preventDefault();
+
+        const jsonData: object = {
             "method": "POST",
             "headers": {
                 "Content-Type": "application/json"
             },
             "body": JSON.stringify({
-                "username": username.current?.value,
-                "password": password.current?.value
+                "username": username.current!.value,
+                "password": password.current!.value
             })
         }
 
-        const response = await fetch(`/login`, jsonData);
-        const data = await response.json();
+        try {
+            const response: Response = await fetch('/login/user', jsonData);
+            const data: LoginData = await response.json();
 
-        if (data.error) {
-            alert(data.error);
-        } else {
-            document.cookie = `token=${data.token}; path=/`;
-            window.location.href = "/";
+            if (data.status === 200) {
+                // console.log('Login successful!');
+                window.location.href = '/';
+            } else if (data.status === 404) {
+                console.error('User not found:', data.message);
+                alert('User not found. Please try again.');
+            } else if (data.status === 401) {
+                console.error('Incorrect password:', data.message);
+                alert('Incorrect password. Please try again.');
+            } else {
+                console.error('Login failed:', data.message);
+                alert('Login failed. Please try again.');
+            }
+        } catch (error: unknown) {
+            console.error('Error:', error as string);
+        }
+    };
+
+    const googleLogin = async (): Promise<void> => {
+        window.location.href = '/auth/google';
+    }
+
+    const guestLogin = async (): Promise<void> => {
+        try {
+            const response: Response = await fetch('/login/guest');
+
+            if (response.status === 200) {
+                // console.log('Login successful!');
+                window.location.href = '/';
+            } else {
+                console.error('Login failed:', response);
+            }
+        } catch (error: unknown) {
+            console.error('Error:', error as string);
         }
     }
 
     React.useEffect(() => {
-        window.onkeydown = (e) => {
-            if (e.key === "Enter") {
-                loginToAccount();
+        const checkLogin = async (): Promise<void> => {
+            try {
+                const response = await fetch('/login', {
+                    method: 'GET',
+                    credentials: 'include',
+                });
+
+                const data: LoginData = await response.json();
+
+                if (data.status === 200) {
+                    // console.log('Already logged in!');
+                    window.location.href = '/';
+                } else {
+                    // console.log('Not logged in.');
+                }
+            } catch (error: unknown) {
+                console.error('Error:', error as string);
             }
         }
+
+        checkLogin();
     }, []);
 
     return (
@@ -43,16 +95,20 @@ const LoginPage: React.FC = (): React.JSX.Element => {
                 <div id="regLogin">
                     <h1>Login</h1>
 
-                    <input type="text" placeholder="Username" ref={username} />
-                    <input type="password" placeholder="Password" ref={password} />
+                    <form onSubmit={loginToAccount}>
+                        <input type="text" placeholder="Email" ref={username} />
+                        <input type="password" placeholder="Password" autoComplete='current-password' ref={password} />
 
-                    <button type="submit" onClick={() => loginToAccount()}>Login</button>
+                        <button type="submit">Login</button>
+                    </form>
 
                     <hr />
 
-                    <div id="googleLogin">
-                        <button>Login with Google</button>
-                    </div>
+                    <button onClick={() => googleLogin()}>Register/Sign In with Google</button>
+
+                    <hr />
+
+                    <button onClick={() => guestLogin()}>Continue as Guest</button>
                 </div>
             </div>
         </section>

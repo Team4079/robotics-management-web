@@ -1,0 +1,177 @@
+#events {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+
+    #container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-size: 1.5rem;
+        text-align: center;
+        width: 85vw;
+        height: 100vh;
+
+        #content {
+            h1 {
+                font-size: 4vw;
+                margin: 0;
+                margin-top: 4vh;
+                padding: 0;
+                width: 25vw;
+            }
+        }
+
+        #eventsLists {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            width: 85vw;
+
+            #left {
+                #eventList {
+                    font-size: 3vw;
+                }
+
+                #eventListContent {
+                    background-color: rgb(200, 200, 200);
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                    font-size: 1.5rem;
+                    text-align: center;
+                    width: 25vw;
+                    height: 60vh;
+                    border-radius: 20px;
+                    overflow-y: auto;
+
+                    .event {
+                        display: flex;
+                        flex-direction: row-reverse;
+                        justify-content: center;
+                        align-items: center;
+                        margin: 0;
+                        padding: 0;
+                        list-style: none;
+                        font-size: 1.5rem;
+                        text-align: center;
+                        width: 17.5vw;
+                        height: auto;
+                        background-color: rgb(150, 150, 150);
+                        border-radius: 20px;
+                        margin: 0.5rem;
+                        padding: 0.5rem;
+
+                        button {
+                            background-color: rgb(150, 150, 150);
+                            border: none;
+                            cursor: pointer;
+                            font-size: 1.5rem;
+                            margin: 0.5rem;
+                            padding: 0.5rem;
+                            border-radius: 20px;
+
+                            &:hover {
+                                background-color: rgb(100, 100, 100);
+                            }
+                        }
+
+                        .eventInfo {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            margin: 0;
+                            padding: 0;
+                            list-style: none;
+                            font-size: 1.5rem;
+                            text-align: center;
+                            width: 15vw;
+                            height: auto;
+
+                            h3 {
+                                font-size: 2vw;
+                                margin: 0;
+                                padding: 0;
+                            }
+
+                            p {
+                                font-size: 1vw;
+                                margin: 0;
+                                padding: 0;
+                            }
+
+                            button {
+                                background-color: rgb(150, 150, 150);
+                                border: none;
+                                cursor: pointer;
+                                font-size: 1.5rem;
+                                margin: 0.5rem;
+                                padding: 0.5rem;
+                                border-radius: 20px;
+
+                                &:hover {
+                                    background-color: rgb(100, 100, 100);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            #right {
+                #eventCreate {
+                    font-size: 3vw;
+                }
+
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                    font-size: 1.5rem;
+                    text-align: center;
+
+                    input {
+                        font-size: 1.5rem;
+                        margin: 0.5rem;
+                        padding: 0.5rem;
+                        border-radius: 20px;
+                        border: none;
+                    }
+
+                    button {
+                        background-color: rgb(150, 150, 150);
+                        border: none;
+                        cursor: pointer;
+                        font-size: 1.5rem;
+                        margin: 0.5rem;
+                        padding: 0.5rem;
+                        border-radius: 20px;
+
+                        &:hover {
+                            background-color: rgb(100, 100, 100);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

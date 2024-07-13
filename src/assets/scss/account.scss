@@ -1,0 +1,96 @@
+#account {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+
+    #container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-size: 1.5rem;
+        text-align: center;
+        width: 85vw;
+        height: 100vh;
+
+        h1 {
+            font-size: 4vw;
+            margin: 0;
+            margin-bottom: 2vh;
+            padding: 0;
+            width: 25vw;
+        }
+
+        #info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-size: 1.5rem;
+
+            input {
+                font-size: 1.5rem;
+                margin: 0.5rem;
+                padding: 0.5rem;
+                border-radius: 20px;
+                border: none;
+            }
+
+            button {
+                background-color: rgb(150, 150, 150);
+                border: none;
+                cursor: pointer;
+                font-size: 1.5rem;
+                margin: 0.5rem;
+                padding: 0.5rem;
+                border-radius: 20px;
+
+                &:hover {
+                    background-color: rgb(100, 100, 100);
+                }
+            }
+        }
+
+        #other {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-size: 1.5rem;
+
+            button {
+                background-color: rgb(150, 150, 150);
+                border: none;
+                cursor: pointer;
+                font-size: 1.5rem;
+                margin: 0.5rem;
+                padding: 0.5rem;
+                border-radius: 20px;
+
+                &:hover {
+                    background-color: rgb(100, 100, 100);
+                }
+            }
+
+            #delete {
+                background-color: rgb(255, 0, 0);
+
+                &:hover {
+                    background-color: rgb(200, 0, 0);
+                }
+            }
+        }
+    }
+}

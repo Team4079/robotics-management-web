@@ -46,9 +46,9 @@ function generateRandomNumber(numberOfDigits: number, type: GenerationType): str
     }
 
     return randomNumber;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("\x1b[31m", `Error generating random number: ${error}`);
-    throw new Error(error);
+    throw new Error(error as string);
   }
 }
 
@@ -62,9 +62,9 @@ async function encryptPassword(myPlaintextPassword: string, saltRounds: number =
   try {
     const hash: string = await bcrypt.hash(myPlaintextPassword, saltRounds);
     return hash;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("\x1b[31m", error as string);
-    throw new Error(error);
+    throw new Error(error as string);
   }
 }
 
@@ -75,13 +75,13 @@ async function encryptPassword(myPlaintextPassword: string, saltRounds: number =
  */
 function permanentEncryptPassword(myPlaintextPassword: string): string {
   try {
-    const hash: any = crypto.createHash('sha256');
-    const data: any = hash.update(myPlaintextPassword, 'utf-8')
+    const hash = crypto.createHash('sha256');
+    const data = hash.update(myPlaintextPassword, 'utf-8')
     const digest: string = data.digest('hex');
     return digest;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("\x1b[31m", error as string);
-    throw new Error(error);
+    throw new Error(error as string);
   }
 }
 
@@ -100,9 +100,9 @@ async function comparePassword(password: string, hashedPassword: string): Promis
     } else {
       return false;
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("\x1b[31m", error as string);
-    throw new Error(error);
+    throw new Error(error as string);
   }
 }
 
@@ -131,9 +131,9 @@ async function encryptData(
     const authTag: Buffer = cipher.getAuthTag();
 
     return { encryptedData, authTag };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("\x1b[31m", error as string);
-    throw new Error(error);
+    throw new Error(error as string);
   }
 }
 
@@ -150,9 +150,9 @@ async function decryptData(encryptedData: string, authTag: Buffer): Promise<stri
     let decryptedData: string = decipher.update(encryptedData, 'hex', 'utf8');
     decryptedData += decipher.final('utf8');
     return decryptedData;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("\x1b[31m", error as string);
-    throw new Error(error);
+    throw new Error(error as string);
   }
 }
 
@@ -164,9 +164,9 @@ async function decryptData(encryptedData: string, authTag: Buffer): Promise<stri
 function encryptIP(ip: string): string {
   try {
   return ip.split('.').map(part => parseInt(part, 10).toString(16)).join('');
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("\x1b[31m", error as string);
-    throw new Error(error);
+    throw new Error(error as string);
   }
 }
 
@@ -180,9 +180,9 @@ function decryptIP(encryptedIP: string): string {
     const match: RegExpMatchArray | null = encryptedIP.match(/.{1,2}/g);
     const ip: string = match ? match.map(part => parseInt(part, 16)).join('.') : '';
     return ip;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("\x1b[31m", error as string);
-    throw new Error(error);
+    throw new Error(error as string);
   }
 }
 
